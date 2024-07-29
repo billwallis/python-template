@@ -22,8 +22,8 @@ ide.optional = true
 
 [tool.poetry.group.dev.dependencies]
 coverage-badge = "^1.1.0"
+setuptools = "*"  # required until https://github.com/dbrgn/coverage-badge/pull/31
 pre-commit = "^3.6.2"
-pylint = "3.1.0"
 
 [tool.poetry.group.test.dependencies]
 pytest = "^8.0.2"
@@ -39,12 +39,21 @@ addopts = "--cov=src --cov-fail-under=80"
 testpaths = ["tests"]
 
 
-[tool.isort]
-profile = "black"
+[tool.ruff]
+line-length = 80
+indent-width = 4
+target-version = "py311"
 
+[tool.ruff.lint]
+select = ["F", "I", "N", "PL", "R", "RUF", "S", "UP", "W"]
+ignore = []
+fixable = ["ALL"]
+unfixable = []
+# Allow unused variables when underscore-prefixed
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
 
-[tool.pylint.format]
-max-line-length = 120
-
-[tool.pylint.MASTER]
-ignore-paths = "^tests/.*$"
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"
