@@ -2,7 +2,7 @@
 Unit tests for the ``src.main`` module.
 """
 
-import src.main as main
+from src import main
 
 
 def test__main():
