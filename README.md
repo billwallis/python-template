@@ -18,3 +18,8 @@
 # Python Template Repo
 
 Not for public consumption; this is just for me (@Bilbottom).
+
+After copying, find and replace on:
+
+- `python-template` -> new repo name
+- `src` -> new package name (optional)

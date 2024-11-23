@@ -1,3 +1,4 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
 ---
 name: Tests
 run-name: Tests 🧪
@@ -26,4 +27,4 @@ jobs:
         run: poetry install --with test
 
       - name: ✅ Run unit tests
-        run: poetry run pytest
+        run: poetry run pytest -vvv
