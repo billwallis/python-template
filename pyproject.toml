@@ -4,7 +4,6 @@ version = "0.0.0"
 description = ""
 authors = [{name = "Bilbottom"}]
 readme = "README.md"
-packages = [{include = "src"}]
 requires-python = ">=3.11"
 dynamic = ["dependencies"]
 
@@ -12,6 +11,9 @@ dynamic = ["dependencies"]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
+
+[tool.poetry]
+packages = [{include = "src"}]
 
 [tool.poetry.group]
 dev.optional = false
