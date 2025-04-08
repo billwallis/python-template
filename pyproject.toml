@@ -22,6 +22,14 @@ test = [
 ]
 
 
+[tool.setuptools]
+packages = ["src"]
+
+# https://setuptools.pypa.io/en/latest/userguide/pyproject_config.html
+#[tool.setuptools.packages.find]
+#include = ["src"]
+
+
 [tool.pytest.ini_options]
 addopts = "--cov=src --cov-fail-under=80"
 testpaths = ["tests"]

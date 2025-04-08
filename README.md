@@ -1,6 +1,6 @@
 <div align="center">
 
-[![Python](https://img.shields.io/badge/Python-3.11+-blue.svg)](https://www.python.org/downloads/release/python-3110/)
+[![Python](https://img.shields.io/badge/Python-3.11+-blue.svg)](https://www.python.org/downloads/)
 [![uv](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/uv/main/assets/badge/v0.json)](https://github.com/astral-sh/uv)
 [![tests](https://github.com/Bilbottom/python-template/actions/workflows/tests.yaml/badge.svg)](https://github.com/Bilbottom/python-template/actions/workflows/tests.yaml)
 [![coverage](coverage.svg)](https://github.com/dbrgn/coverage-badge)
@@ -22,3 +22,12 @@ After copying, find and replace on:
 
 - `python-template` -> new repo name
 - `src` -> new package name (optional)
+
+## Quick start
+
+Install [uv](https://docs.astral.sh/uv/getting-started/installation/) and then enable [pre-commit](https://pre-commit.com/):
+
+```bash
+uv sync --all-groups
+pre-commit install --install-hooks
+```
