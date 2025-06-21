@@ -53,8 +53,10 @@ repos:
         name: Make code pretty
 
   - repo: https://github.com/billwallis/bills-hooks
-    rev: v0.0.3
+    rev: v0.0.4
     hooks:
+      - id: pre-commit-validate
+        name: Validate pre-commit config
       - id: tidy-gitkeep
         name: Remove redundant .gitkeep files
 
