@@ -13,21 +13,17 @@ dependencies = []
 
 [dependency-groups]
 dev = [
-    "coverage-badge>=1.1.0",
+    "coverage-badge>=1.1.2",
     "pre-commit>=4.2.0",
 ]
 test = [
-    "pytest>=8.3.5",
-    "pytest-cov>=6.0.0",
+    "pytest>=8.4.1",
+    "pytest-cov>=6.2.1",
 ]
 
 
 [tool.setuptools]
 packages = ["src"]
-
-# https://setuptools.pypa.io/en/latest/userguide/pyproject_config.html
-#[tool.setuptools.packages.find]
-#include = ["src"]
 
 
 [tool.uv]
