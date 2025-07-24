@@ -46,9 +46,9 @@ repos:
         name: Check that the lock file is up-to-date
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.12.4
+    rev: v0.12.5
     hooks:
-      - id: ruff
+      - id: ruff-check
         name: Lint Python code
         args: ["--fix"]
       - id: ruff-format
