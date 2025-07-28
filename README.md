@@ -1,4 +1,4 @@
-<div align="center">
+<span align="center">
 
 [![Python](https://img.shields.io/badge/Python-3.11+-blue.svg)](https://www.python.org/downloads/)
 [![uv](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/uv/main/assets/badge/v0.json)](https://github.com/astral-sh/uv)
@@ -9,7 +9,7 @@
 [![pre-commit.ci status](https://results.pre-commit.ci/badge/github/billwallis/python-template/main.svg)](https://results.pre-commit.ci/latest/github/billwallis/python-template/main)
 [![GitHub last commit](https://img.shields.io/github/last-commit/billwallis/python-template)](https://shields.io/badges/git-hub-last-commit)
 
-</div>
+</span>
 
 ---
 
@@ -27,6 +27,6 @@ After copying, find and replace on:
 Install [uv](https://docs.astral.sh/uv/getting-started/installation/) and then enable [pre-commit](https://pre-commit.com/):
 
 ```bash
-uv sync --all-groups
+uv sync
 pre-commit install --install-hooks
 ```

@@ -29,6 +29,7 @@ default-groups = "all"
 [tool.uv.build-backend]
 module-name = "src"
 module-root = ""
+#namespace = true
 
 
 [tool.pytest.ini_options]
