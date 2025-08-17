@@ -58,6 +58,16 @@ repos:
       - id: ruff-format
         name: Format Python code
 
+  # https://github.com/astral-sh/ty?tab=readme-ov-file#getting-started
+  - repo: local
+    hooks:
+      - id: ty
+        name: Run type checks
+        entry: uvx ty check
+        language: system
+        pass_filenames: true
+        always_run: false
+
   - repo: https://github.com/billwallis/bills-hooks
     rev: v0.0.6
     hooks:
