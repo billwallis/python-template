@@ -20,7 +20,7 @@ Not for public consumption; this is just for me (@billwallis).
 After copying, find and replace on:
 
 - `python-template` -> new repo name
-- `src` -> new package name (optional)
+- `python_template` -> new package name
 
 ## Quick start
 
