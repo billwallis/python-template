@@ -14,11 +14,12 @@ dependencies = []
 [dependency-groups]
 dev = [
     "coverage-badge>=1.1.2",
+    "poethepoet>=0.37.0",
     "pre-commit>=4.3.0",
 ]
 test = [
-    "pytest>=8.4.1",
-    "pytest-cov>=6.2.1",
+    "pytest>=8.4.2",
+    "pytest-cov>=7.0.0",
 ]
 
 
@@ -30,6 +31,22 @@ default-groups = "all"
 #module-name = "src"
 #module-root = ""
 #namespace = true
+
+
+[tool.poe]
+verbosity = -1
+
+[tool.poe.tasks]
+install.shell = """
+    pre-commit install --install-hooks
+"""
+test = "uv run pytest -v"
+lint.shell = """
+    echo '\\033[0;34mpre-commit checks\\033[0m'
+    SKIP=identity pre-commit run --all-files --hook-stage pre-commit
+    echo '\\033[0;34mpre-push checks\\033[0m'
+    pre-commit run --all-files --hook-stage pre-push
+"""
 
 
 [tool.pytest.ini_options]
