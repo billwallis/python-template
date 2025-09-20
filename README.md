@@ -24,7 +24,7 @@ After copying, find and replace on:
 
 ## Quick start
 
-Install [uv](https://docs.astral.sh/uv/getting-started/installation/) and then enable [pre-commit](https://pre-commit.com/):
+Install [uv](https://docs.astral.sh/uv/getting-started/installation/) and then install the dependencies:
 
 ```bash
 uv sync
