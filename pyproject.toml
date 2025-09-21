@@ -79,7 +79,6 @@ select = [
     "PERF",  # Perflint
     "RUF",   # Ruff-specific
     "S",     # flake8-bandit
-    "TRY",   # tryceratops
     "UP",    # pyupgrade
     "W",     # pycodestyle-warning
 ]
