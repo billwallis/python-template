@@ -43,6 +43,11 @@ install.shell = """
     uv sync --refresh
     pre-commit install --install-hooks
 """
+update.shell = """
+    uv sync --refresh --upgrade
+    pre-commit autoupdate
+    pre-commit install --install-hooks
+"""
 test = "uv run pytest -v"
 
 [tool.poe.tasks.lint]
