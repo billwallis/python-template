@@ -27,6 +27,5 @@ After copying, find and replace on:
 Install [uv](https://docs.astral.sh/uv/getting-started/installation/) and then install the dependencies:
 
 ```bash
-uv sync
-poe install
+uvx --with poethepoet poe install
 ```

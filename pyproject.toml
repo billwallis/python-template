@@ -28,6 +28,7 @@ test = [
 [tool.uv]
 required-version = ">=0.8,<1.0"
 default-groups = "all"
+#package = false
 
 #[tool.uv.build-backend]
 #module-name = "src"
@@ -43,8 +44,27 @@ install.shell = """
     uv sync --refresh
     pre-commit install --install-hooks
 """
+update.shell = """
+    uv sync --refresh --upgrade
+    pre-commit autoupdate
+    pre-commit install --install-hooks
+"""
 test = "uv run pytest -v"
-lint.shell = """
+
+[tool.poe.tasks.lint]
+control.expr = "sys.platform"
+
+[[tool.poe.tasks.lint.switch]]
+case = "win32"
+shell = """
+    echo '=== pre-commit checks ==='
+    SKIP=identity pre-commit run --all-files --hook-stage pre-commit
+    echo '=== pre-push checks ==='
+    pre-commit run --all-files --hook-stage pre-push
+"""
+
+[[tool.poe.tasks.lint.switch]]
+shell = """
     echo '\\033[0;34mpre-commit checks\\033[0m'
     SKIP=identity pre-commit run --all-files --hook-stage pre-commit
     echo '\\033[0;34mpre-push checks\\033[0m'
