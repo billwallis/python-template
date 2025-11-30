@@ -60,7 +60,7 @@ shell = """
     echo '=== pre-commit checks ==='
     SKIP=identity pre-commit run --all-files --hook-stage pre-commit
     echo '=== pre-push checks ==='
-    pre-commit run --all-files --hook-stage pre-push
+    SKIP=identity pre-commit run --all-files --hook-stage pre-push
 """
 
 [[tool.poe.tasks.lint.switch]]
@@ -68,7 +68,7 @@ shell = """
     echo '\\033[0;34mpre-commit checks\\033[0m'
     SKIP=identity pre-commit run --all-files --hook-stage pre-commit
     echo '\\033[0;34mpre-push checks\\033[0m'
-    pre-commit run --all-files --hook-stage pre-push
+    SKIP=identity pre-commit run --all-files --hook-stage pre-push
 """
 
 
