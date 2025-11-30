@@ -1,12 +1,5 @@
-"""
-Entry point into the package.
-"""
-
-
-def main() -> None:
-    """
-    Entry point into the module.
-    """
+def main() -> int:
+    return 0
 
 
 if __name__ == "__main__":
