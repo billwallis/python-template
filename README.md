@@ -22,7 +22,7 @@ After copying, find and replace on:
 - `python-template` -> new repo name
 - `python_template` -> new package name
 
-## Quick start
+## Contributing
 
 Install [uv](https://docs.astral.sh/uv/getting-started/installation/) and then install the dependencies:
 
