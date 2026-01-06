@@ -16,11 +16,11 @@ dependencies = []
 [dependency-groups]
 dev = [
     "coverage-badge>=1.1.2",
-    "poethepoet>=0.37.0",
-    "pre-commit>=4.3.0",
+    "poethepoet>=0.40.0",
+    "pre-commit>=4.5.1",
 ]
 test = [
-    "pytest>=8.4.2",
+    "pytest>=9.0.2",
     "pytest-cov>=7.0.0",
 ]
 
