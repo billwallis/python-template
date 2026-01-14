@@ -1,6 +1,6 @@
 <span align="center">
 
-[![Python](https://img.shields.io/badge/Python-3.11+-blue.svg)](https://www.python.org/downloads/)
+[![Python](https://img.shields.io/badge/Python-3.13+-blue.svg)](https://www.python.org/downloads/)
 [![uv](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/uv/main/assets/badge/v0.json)](https://github.com/astral-sh/uv)
 [![tests](https://github.com/billwallis/python-template/actions/workflows/tests.yaml/badge.svg)](https://github.com/billwallis/python-template/actions/workflows/tests.yaml)
 [![coverage](https://raw.githubusercontent.com/billwallis/python-template/refs/heads/main/coverage.svg)](https://github.com/dbrgn/coverage-badge)
