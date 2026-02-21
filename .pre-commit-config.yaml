@@ -55,13 +55,13 @@ repos:
         name: Validate pre-commit CI config
 
   - repo: https://github.com/astral-sh/uv-pre-commit
-    rev: 0.9.25
+    rev: 0.10.4
     hooks:
       - id: uv-lock
         name: Check that the lock file is up-to-date
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.14.11
+    rev: v0.15.2
     hooks:
       - id: ruff-check
         name: Lint Python code
@@ -81,13 +81,13 @@ repos:
         types: ["python"]
 
   - repo: https://github.com/billwallis/bills-hooks
-    rev: v0.0.6
+    rev: v0.0.8
     hooks:
       - id: tidy-gitkeep
         name: Remove redundant .gitkeep files
 
   - repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: 0.36.0
+    rev: 0.36.2
     hooks:
       - id: check-github-workflows
       - id: check-compose-spec
