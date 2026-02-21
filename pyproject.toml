@@ -15,7 +15,6 @@ dependencies = []
 
 [dependency-groups]
 dev = [
-    "coverage-badge>=1.1.2",
     "poethepoet>=0.41.0",
     "pre-commit>=4.5.1",
 ]
