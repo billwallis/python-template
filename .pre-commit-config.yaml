@@ -100,7 +100,7 @@ repos:
         entry: check-jsonschema
         pass_filenames: true
         language: python
-        additional_dependencies: ["check-jsonschema==0.35.0"]
+        additional_dependencies: ["check-jsonschema==0.36.2"]
         files: pyproject.toml
         args: ["--schemafile", "https://json.schemastore.org/pyproject.json"]
         # This calls a remote URL, so run on pre-push to avoid slowing down commits
