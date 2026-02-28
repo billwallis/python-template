@@ -1,7 +1,7 @@
 # yaml-language-server: $schema=https://json.schemastore.org/pyproject.json
 
 [build-system]
-requires = ["uv_build>=0.8.2,<1.0.0"]
+requires = ["uv_build>=0.8"]
 build-backend = "uv_build"
 
 [project]
@@ -25,7 +25,7 @@ test = [
 
 
 [tool.uv]
-required-version = ">=0.8,<1.0"
+required-version = ">=0.8"
 default-groups = "all"
 #package = false
 
@@ -37,7 +37,7 @@ default-groups = "all"
 
 [tool.poe]
 verbosity = -1
-#envfile = ".env"
+envfile.optional = ".env"
 
 [tool.poe.tasks]
 install.shell = """
