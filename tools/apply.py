@@ -16,6 +16,14 @@ FILES_TO_COPY = [
 ]
 
 
+def _copy_file_to_target(
+    source: pathlib.Path,
+    destination: pathlib.Path,
+) -> None:
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copy(source, destination)
+
+
 def copy_files_to_target(target: pathlib.Path) -> int:
     if not target.exists():
         logging.error(f"target {target} does not exist")
@@ -24,10 +32,15 @@ def copy_files_to_target(target: pathlib.Path) -> int:
         logging.error(f"target {target} is not a directory")
         return FAILURE
 
+    ret = SUCCESS
     for file in FILES_TO_COPY:
-        shutil.copy(ROOT / file, target / file)
+        try:
+            _copy_file_to_target(source=ROOT / file, destination=target / file)
+        except Exception as e:
+            logging.error(str(e))
+            ret = FAILURE
 
-    return SUCCESS
+    return ret
 
 
 def main(argv: Sequence[str] | None = None) -> int:
@@ -43,7 +56,7 @@ def main(argv: Sequence[str] | None = None) -> int:
     if not args.targets:
         parser.print_help()
     for target in args.targets:
-        ret |= copy_files_to_target(target=pathlib.Path(target))
+        ret |= copy_files_to_target(target=pathlib.Path(target).resolve())
 
     return ret
 
