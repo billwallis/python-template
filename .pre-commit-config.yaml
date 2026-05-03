@@ -23,7 +23,6 @@ repos:
       - id: mixed-line-ending
       - id: check-added-large-files
       - id: check-json
-        exclude: "devcontainer.json"
       - id: check-yaml
       - id: check-toml
       - id: check-ast
