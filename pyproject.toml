@@ -73,8 +73,13 @@ shell = """
 
 
 [tool.pytest.ini_options]
-addopts = "--cov=src --cov-fail-under=80"
+addopts = "--cov=src"
 testpaths = ["tests"]
+
+[tool.coverage]
+run.branch = true
+report.fail_under = 80
+report.show_missing = true
 
 
 [tool.ruff]
