@@ -20,6 +20,7 @@ dev = [
     "pre-commit>=4.5.1",
 ]
 test = [
+    "covdefaults>=2.3.0",
     "pytest>=9.0.3",
     "pytest-cov>=7.0.0",
 ]
@@ -73,11 +74,12 @@ shell = """
 
 
 [tool.pytest.ini_options]
-addopts = "--cov=src"
+addopts = "--cov"
 testpaths = ["tests"]
 
 [tool.coverage]
 run.branch = true
+run.plugins = ["covdefaults"]  # https://youtu.be/70T6OxKwxm0
 report.fail_under = 80
 report.show_missing = true
 
