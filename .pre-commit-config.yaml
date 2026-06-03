@@ -2,7 +2,7 @@
 ---
 ci:
   autoupdate_schedule: quarterly
-  skip: ["identity", "uv-lock", "pytest", "coverage-badge"]
+  skip: ["identity", "uv-lock", "pytest", "test-coverage", "coverage-badge"]
 
 default_install_hook_types: ["pre-commit", "pre-push"]
 default_stages: ["pre-commit"]
@@ -79,26 +79,24 @@ repos:
 
   - repo: local
     hooks:
-      - id: pytest
+      - <<: &tests-config
+          language: unsupported
+          pass_filenames: false
+          always_run: true
+          stages: ["pre-push"]
+        id: pytest
         name: Run unit tests
         entry: uv run pytest --quiet --cov-report=xml
-        stages: ["pre-push"]
-        language: unsupported
-        pass_filenames: false
-        always_run: true
-        # https://youtu.be/70T6OxKwxm0
-      - id: test-coverage
+      - <<: *tests-config
+        id: test-coverage  # https://youtu.be/70T6OxKwxm0
         name: Tests have 100% run coverage
         entry: >
-          coverage report
+          uv run coverage report
           --no-skip-covered
           --include 'tests/*'
           --fail-under 100
-        stages: ["pre-push"]
-        language: unsupported
-        pass_filenames: false
-        always_run: true
-      - id: coverage-badge
+      - <<: *tests-config
+        id: coverage-badge
         name: Generate coverage badge
         entry: >
           genbadge coverage
@@ -107,7 +105,4 @@ repos:
           --silent
         # https://github.com/smarie/python-genbadge/releases
         additional_dependencies: ["genbadge[coverage]==1.1.3"]
-        stages: ["pre-push"]
         language: python
-        pass_filenames: false
-        always_run: true
