@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import argparse
+import dataclasses
 import logging
 import pathlib
 import shutil
@@ -9,25 +10,50 @@ from collections.abc import Sequence
 SUCCESS = 0
 FAILURE = 1
 ROOT = pathlib.Path(__file__).resolve().parent.parent
+THIS_REPO_NAME = "python-template"
 FILES_TO_COPY = [
     ".github/workflows/tests.yaml",
     ".gitignore",
     ".pre-commit-config.yaml",
     "LICENSE",
     "pyproject.toml",
+    "README.md",
 ]
+
+
+@dataclasses.dataclass
+class Context:
+    dry_run: bool | None
+    target_repo: pathlib.Path | None
+
+
+def _apply_template(target: pathlib.Path, context: Context) -> None:
+    # Right now, this just replaces `python-template` with the name of the
+    # target repo, but this could be extended to, say, apply Jinja templates
+    assert context.target_repo is not None  # noqa: S101
+    target.write_text(
+        (
+            target.read_text(encoding="utf-8").replace(
+                THIS_REPO_NAME, context.target_repo.name
+            )
+        ),
+        encoding="utf-8",
+    )
 
 
 def _copy_file_to_target(
     source: pathlib.Path,
     destination: pathlib.Path,
-    dry_run: bool,
+    context: Context,
 ) -> None:
-    if dry_run:
+    if context.dry_run:
         print(f"Copying '{source}' to '{destination}")
     else:
         destination.parent.mkdir(parents=True, exist_ok=True)
+        # This is not atomic: it copies, then modifies. For atomicity, we should
+        # modify in transit or modify a temporary intermediate file
         shutil.copy(source, destination)
+        _apply_template(destination, context)
 
 
 def copy_files_to_target(target: pathlib.Path, dry_run: bool) -> int:
@@ -44,7 +70,10 @@ def copy_files_to_target(target: pathlib.Path, dry_run: bool) -> int:
             _copy_file_to_target(
                 source=ROOT / file,
                 destination=target / file,
-                dry_run=dry_run,
+                context=Context(
+                    dry_run=dry_run,
+                    target_repo=target,
+                ),
             )
         except Exception as e:
             logging.error(str(e))
