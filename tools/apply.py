@@ -4,6 +4,7 @@ import argparse
 import dataclasses
 import logging
 import pathlib
+import re
 import shutil
 from collections.abc import Sequence
 
@@ -25,6 +26,19 @@ FILES_TO_COPY = [
 class Context:
     dry_run: bool | None
     target_repo: pathlib.Path | None
+
+
+def _select_files(
+    files: list[str],
+    include: list[str],
+    exclude: list[str],
+) -> list[str]:
+    return [
+        file
+        for file in files
+        if any(re.match(i, file) for i in include)
+        and not all(re.match(e, file) for e in exclude)
+    ]
 
 
 def _apply_template(target: pathlib.Path, context: Context) -> None:
@@ -56,7 +70,11 @@ def _copy_file_to_target(
         _apply_template(destination, context)
 
 
-def copy_files_to_target(target: pathlib.Path, dry_run: bool) -> int:
+def copy_files_to_target(
+    target: pathlib.Path,
+    files: list[str],
+    dry_run: bool,
+) -> int:
     if not target.exists():
         logging.error(f"target {target} does not exist")
         return FAILURE
@@ -65,7 +83,7 @@ def copy_files_to_target(target: pathlib.Path, dry_run: bool) -> int:
         return FAILURE
 
     ret = SUCCESS
-    for file in FILES_TO_COPY:
+    for file in files:
         try:
             _copy_file_to_target(
                 source=ROOT / file,
@@ -94,6 +112,8 @@ def main(argv: Sequence[str] | None = None) -> int:
         action=argparse.BooleanOptionalAction,
         default=False,
     )
+    parser.add_argument("--include", nargs="*", default=[".*"])
+    parser.add_argument("--exclude", nargs="*", default=["^$"])
 
     args = parser.parse_args(argv)
     ret = SUCCESS
@@ -102,6 +122,7 @@ def main(argv: Sequence[str] | None = None) -> int:
     for target in args.targets:
         ret |= copy_files_to_target(
             target=pathlib.Path(target).resolve(),
+            files=_select_files(FILES_TO_COPY, args.include, args.exclude),
             dry_run=args.dry_run,
         )
 
