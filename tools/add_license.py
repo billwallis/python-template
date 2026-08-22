@@ -35,8 +35,8 @@ def git(
     args: Iterable[str],
     git_dir: pathlib.Path,
 ) -> str:
-    proc = subprocess.run(
-        args=("git", "-C", git_dir, *args),
+    proc = subprocess.run(  # noqa: S603
+        args=("git", "-C", git_dir, *args),  # noqa: S607
         check=False,  # DON'T raise an exception on non-zero return codes
         capture_output=True,
     )
