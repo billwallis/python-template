@@ -35,6 +35,7 @@ install.shell = """
     pre-commit install --install-hooks
 """
 test.shell = """
+    coverage erase
     coverage run -m pytest -vvv
     coverage xml --quiet
     coverage report --no-skip-covered --include 'tests/*'
