@@ -35,9 +35,14 @@ repos:
       - id: check-pre-commit-ci-config
 
   - repo: https://github.com/billwallis/bills-hooks
-    rev: v0.0.16
+    rev: v0.0.17
     hooks:
       - id: banned-python-code
+      - id: check-filename-pattern
+        files: '^tests/.*\.py$'
+        exclude: '^.*/(conftest|__init__)\.py$'
+        args: ["--name-only", "--regex", '^test__.*\.py$']
+      - id: check-github-codeowners
       - id: check-no-commit-comment
       - id: tidy-gitkeep
 
