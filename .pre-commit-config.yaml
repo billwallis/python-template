@@ -61,12 +61,12 @@ repos:
           additional_dependencies: ["check-jsonschema==0.38.2"]
           # This calls a remote URL, so run on pre-push to avoid slowing down commits
           stages: ["pre-push"]
-        id: check-pyproject-schema
+        id: check-pyproject
         name: Validate pyproject.toml schema
         files: pyproject.toml
         args: ["--schemafile", "https://json.schemastore.org/pyproject.json"]
       - <<: *check-jsonschema-config
-        id: check-pre-commit-hooks-schema
+        id: check-pre-commit-hooks
         name: Validate .pre-commit-hooks.yaml schema
         files: .pre-commit-hooks.yaml
         args: ["--schemafile", "https://json.schemastore.org/pre-commit-hooks.json"]
