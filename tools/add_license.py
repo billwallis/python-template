@@ -15,7 +15,6 @@ from collections.abc import Iterable, Sequence
 FEATURE_BRANCH = "add-license"
 COMMIT_MESSAGE = "feat: add license"
 NEW_PR_LINK = r"https://github.com/billwallis/{repository}/pull/new/{branch}"
-# ruff: noqa: E101
 EXPECTED_GIT_STATUS = textwrap.dedent(
     """\
     On branch add-license
@@ -27,7 +26,7 @@ EXPECTED_GIT_STATUS = textwrap.dedent(
     """
 ).rstrip()
 HERE = pathlib.Path(__file__).parent
-assert HERE.parent.name == "python-template"  # noqa: S101
+assert HERE.parent.name == "python-template"
 LICENSE_FILE = HERE.parent / "LICENSE"
 
 
@@ -35,14 +34,14 @@ def git(
     args: Iterable[str],
     git_dir: pathlib.Path,
 ) -> str:
-    proc = subprocess.run(  # noqa: S603
-        args=("git", "-C", git_dir, *args),  # noqa: S607
-        check=False,  # DON'T raise an exception on non-zero return codes
+    proc = subprocess.run(
+        args=("git", "-C", git_dir, *args),
+        check=False,
         capture_output=True,
     )
 
-    assert isinstance(proc.stdout, bytes)  # noqa: S101
-    assert isinstance(proc.stderr, bytes)  # noqa: S101
+    assert isinstance(proc.stdout, bytes)
+    assert isinstance(proc.stderr, bytes)
 
     out = proc.stdout.decode().rstrip()
     err = proc.stderr.decode().rstrip()
@@ -77,7 +76,7 @@ def _add_license_file(repository: pathlib.Path) -> None:
     )
     out = git(("status",), git_dir=repository)
 
-    assert out == EXPECTED_GIT_STATUS, f"`{out}`\n!=\n`{EXPECTED_GIT_STATUS}`"  # noqa: S101
+    assert out == EXPECTED_GIT_STATUS, f"`{out}`\n!=\n`{EXPECTED_GIT_STATUS}`"
 
 
 def _commit_license_file(repository: pathlib.Path) -> None:
