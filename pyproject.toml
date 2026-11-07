@@ -69,7 +69,7 @@ testpaths = ["tests"]
 [tool.coverage]
 run.source = ["src", "tests"]
 run.plugins = ["covdefaults"]  # https://youtu.be/70T6OxKwxm0
-report.fail_under = 80
+report.fail_under = 100
 report.exclude_lines = [
     "@pytest.mark.skip",
     "@pytest.mark.xfail",
