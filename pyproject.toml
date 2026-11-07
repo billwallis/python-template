@@ -8,9 +8,21 @@ name = "python-template"
 version = "0.0.0"
 description = ""
 authors = [{name = "billwallis"}]
+maintainers = [{name = "billwallis"}]
 readme = "README.md"
+urls.Homepage = "https://github.com/billwallis/python-template"
+urls.Repository = "https://github.com/billwallis/python-template"
+urls.Issues = "https://github.com/billwallis/python-template/issues"
+urls.Documentation = "https://github.com/billwallis/python-template/blob/main/README.md"
+license = "GPL-3.0-or-later"
 license-files = ["LICENSE"]
 requires-python = ">=3.13"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Programming Language :: Python :: 3.15",
+]
 dependencies = []
 
 [dependency-groups]
@@ -22,6 +34,20 @@ test = [
     "covdefaults>=2.3.0",
     "coverage>=7.16.0",
     "pytest>=9.1.1",
+]
+
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+
+[tool.coverage]
+run.source = ["src", "tests"]
+run.plugins = ["covdefaults"]  # https://youtu.be/70T6OxKwxm0
+report.fail_under = 100
+report.exclude_lines = [
+    "@pytest.mark.skip",
+    "@pytest.mark.xfail",
 ]
 
 
@@ -61,16 +87,3 @@ shell = """
     echo '\\033[0;34mpre-push checks\\033[0m'
     SKIP=identity pre-commit run --all-files --hook-stage pre-push
 """
-
-
-[tool.pytest.ini_options]
-testpaths = ["tests"]
-
-[tool.coverage]
-run.source = ["src", "tests"]
-run.plugins = ["covdefaults"]  # https://youtu.be/70T6OxKwxm0
-report.fail_under = 100
-report.exclude_lines = [
-    "@pytest.mark.skip",
-    "@pytest.mark.xfail",
-]
