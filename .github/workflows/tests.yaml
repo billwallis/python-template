@@ -24,4 +24,4 @@ jobs:
         run: pip install --editable . --group test
 
       - name: ✅ Run unit tests
-        run: pytest -vvv
+        run: pytest -vvv --color yes
