@@ -8,9 +8,21 @@ name = "python-template"
 version = "0.0.0"
 description = ""
 authors = [{name = "billwallis"}]
+maintainers = [{name = "billwallis"}]
 readme = "README.md"
+urls.Homepage = "https://github.com/billwallis/python-template"
+urls.Repository = "https://github.com/billwallis/python-template"
+urls.Issues = "https://github.com/billwallis/python-template/issues"
+urls.Documentation = "https://github.com/billwallis/python-template/blob/main/README.md"
+license = "GPL-3.0-or-later"
 license-files = ["LICENSE"]
 requires-python = ">=3.13"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Programming Language :: Python :: 3.15",
+]
 dependencies = []
 
 [dependency-groups]
