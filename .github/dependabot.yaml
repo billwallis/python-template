@@ -1,0 +1,13 @@
+# https://docs.github.com/en/code-security/reference/supply-chain-security/dependabot-options-reference
+---
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    open-pull-requests-limit: 3
+    schedule: {interval: "weekly"}
+    cooldown: {default-days: 7}
+    commit-message: {prefix: "chore"}
+    groups:
+      actions-non-major-updates:
+        update-types: ["minor", "patch"]
