@@ -37,6 +37,20 @@ test = [
 ]
 
 
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+
+[tool.coverage]
+run.source = ["src", "tests"]
+run.plugins = ["covdefaults"]  # https://youtu.be/70T6OxKwxm0
+report.fail_under = 100
+report.exclude_lines = [
+    "@pytest.mark.skip",
+    "@pytest.mark.xfail",
+]
+
+
 [tool.poe]
 verbosity = -1
 envfile.optional = ".env"
@@ -73,16 +87,3 @@ shell = """
     echo '\\033[0;34mpre-push checks\\033[0m'
     SKIP=identity pre-commit run --all-files --hook-stage pre-push
 """
-
-
-[tool.pytest.ini_options]
-testpaths = ["tests"]
-
-[tool.coverage]
-run.source = ["src", "tests"]
-run.plugins = ["covdefaults"]  # https://youtu.be/70T6OxKwxm0
-report.fail_under = 100
-report.exclude_lines = [
-    "@pytest.mark.skip",
-    "@pytest.mark.xfail",
-]
