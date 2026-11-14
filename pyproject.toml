@@ -57,14 +57,14 @@ envfile.optional = ".env"
 
 [tool.poe.tasks]
 install.shell = """
-    pip install --editable . --group dev --group test
+    pip install --editable . --group dev --group test --force-reinstall
     pre-commit install --install-hooks
 """
 test.shell = """
     coverage erase
     coverage run -m pytest -vvv
     coverage xml --quiet
-    coverage report --no-skip-covered --include 'tests/*'
+    coverage report --no-skip-covered --include 'tests/*' --fail-under 100
     coverage report --no-skip-covered --include 'src/*'
 """
 
