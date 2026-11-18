@@ -57,7 +57,12 @@ envfile.optional = ".env"
 
 [tool.poe.tasks]
 install.shell = """
-    pip install --editable . --group dev --group test --force-reinstall
+    pip install \
+        --editable . \
+        --group dev \
+        --group test \
+        --uploaded-prior-to P7D \
+        --force-reinstall
     pre-commit install --install-hooks
 """
 test.shell = """
